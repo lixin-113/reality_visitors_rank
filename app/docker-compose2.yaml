@@ -1,0 +1,15 @@
+services:
+  fraud_url:
+    image: python:3.12.8
+    container_name: realtime_fraud_visitors
+    ports:
+      - "8648:8648"
+    volumes:
+      - /data02/fraud_visitors/fraud_visitors_url/app/output:/data/history_data
+      - /data02/output:/data/output
+      - /data01/xxxx:data/wxa_data
+
+    entrypoint: ["/bin/sh", "-c"]
+    command: ["sleep infinity"]
+    privileged: true
+    shm_size: '10g'
